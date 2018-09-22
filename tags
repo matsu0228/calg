@@ -1,0 +1,28 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/e522743/
+BeginDay	main.go	/^func (c jpCalender) BeginDay() time.Time {$/;"	f	unknown:main.jpCalender
+LastDay	main.go	/^func (c jpCalender) LastDay() time.Time {$/;"	f	unknown:main.jpCalender
+NextWeekDay	main.go	/^func (c jpCalender) NextWeekDay(d time.Time) time.Time {$/;"	f	unknown:main.jpCalender
+ShowCalenderLabel	main.go	/^func (c jpCalender) ShowCalenderLabel() string {$/;"	f	unknown:main.jpCalender
+ShowWeek	main.go	/^func (c jpCalender) ShowWeek(startDay time.Time) string {$/;"	f	unknown:main.jpCalender
+ShowWeekLabel	main.go	/^func (c jpCalender) ShowWeekLabel() string {$/;"	f	unknown:main.jpCalender
+Weekday	main.go	/^func (c jpCalender) Weekday(d time.Time) string {$/;"	f	unknown:main.jpCalender
+calg	README.md	/^# calg$/;"	c
+colorable	main.go	/^func colorable(s string) string {$/;"	f	package:main
+convertWeekday	main.go	/^func (c jpCalender) convertWeekday(i int) string {$/;"	f	unknown:main.jpCalender
+fillDate	main.go	/^func (c jpCalender) fillDate(d time.Time) string {$/;"	f	unknown:main.jpCalender
+fillWeekDay	main.go	/^func (c jpCalender) fillWeekDay(startDay time.Time) string {$/;"	f	unknown:main.jpCalender
+init	main.go	/^func init() {$/;"	f	package:main
+isBeginWeek	main.go	/^func (c jpCalender) isBeginWeek(d time.Time) bool {$/;"	f	unknown:main.jpCalender
+isLastWeek	main.go	/^func (c jpCalender) isLastWeek(d time.Time) bool {$/;"	f	unknown:main.jpCalender
+jpCalender	main.go	/^type jpCalender struct {$/;"	s	package:main
+main	main.go	/^func main() {$/;"	f	package:main
+main	main.go	/^package main$/;"	p
+today	main.go	/^var today time.Time$/;"	v	package:main
+usage	README.md	/^## usage$/;"	s
+verbos	main.go	/^var verbos bool$/;"	v	package:main
