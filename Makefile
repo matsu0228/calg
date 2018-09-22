@@ -20,8 +20,9 @@ deps:
 		cd $(WORK_DIR)
 		dep ensure -v
 
-build: deps
-		$(WORK_DIR)/build/crosscompile_for_go.sh -o $(CMD_NAME)
+# TODO: os flag
+build: 
+		$(shell cd $(WORK_DIR); $(WORK_DIR)/build/compiler.sh -o $(CMD_NAME) -l)
 
 setup:
 ifndef APP_ROOT
