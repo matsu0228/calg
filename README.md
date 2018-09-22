@@ -19,4 +19,6 @@ $ calg
 
 ## TODO
 
-* add `-m` option(start with monday).
+* add eterate for end of month
+* easy setup/ download
+* add test
