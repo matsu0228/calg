@@ -1,10 +1,20 @@
 language: go
 
+# for codeCov
+before_install:
+  sudo pip install codecov
+
 install:
  - go get -u golang.org/x/tools/cmd/goimports
  - go get -u github.com/golang/lint/golint
+ - go get -u golang.org/x/tools/cmd/cover
 
 script:
  - go vet ./...
  - diff <(goimports -d .) <(printf "")
  - diff <(golint ./...) <(printf "")
+ - go test github.com/matsu0228/calg/calg -v -coverprofile=coverage.txt -covermode=count
+
+# for codeCov
+after_success:
+  codecov
