@@ -7,8 +7,6 @@
 * calender command for terminal.
 * `cal` command is useful for terminal user, but it isn't supported `-m` option(start with monday) in Mac.
 
-
-
 ## usage
 
 * type `calg`, then display following in your terminal
@@ -31,6 +29,16 @@ $ calg -m
 10 11 12 13 14 15 16
 17 18 19 20 21 22 23
 24 25 26 27 28 29 30
+```
+
+## install
+
+* set `GOBIN` then install with `go get`
+```
+$ go get github.com/matsu0228/calg
+
+$ which calg
+-> $GOBIN/clag
 ```
 
 ## TODO
