@@ -1,5 +1,6 @@
 # calg
 
+[![codecov](https://codecov.io/gh/matsu0228/calg/branch/master/graph/badge.svg)](https://codecov.io/gh/matsu0228/calg)
 [![Build Status](https://travis-ci.org/matsu0228/calg.svg?branch=master)](https://travis-ci.org/matsu0228/calg)
 [![Go Report Card](https://goreportcard.com/badge/github.com/matsu0228/calg)](https://goreportcard.com/report/github.com/matsu0228/calg)
 
