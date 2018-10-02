@@ -3,6 +3,7 @@ package calg
 import (
 	"fmt"
 	"log"
+	"os"
 	"strings"
 	"time"
 )
@@ -36,6 +37,24 @@ func NewCalender(now time.Time, swMonday, v bool) *JpCalender { //*Calender {
 		log.Print("[INFO]", wdIndex)
 	}
 	return &JpCalender{startWithMonday: swMonday, verbos: v, weekdayIndex: wdIndex}
+}
+
+// ShowMonthly :display monthly calender
+func (c JpCalender) ShowMonthly() {
+
+	// display label
+	fmt.Println(c.ShowCalenderLabel())
+	fmt.Println(c.ShowWeekLabel())
+
+	date := c.BeginDay()
+
+	for {
+		fmt.Println(c.ShowWeek(date))
+		date = c.NextWeekDay(date)
+		if c.LastDay().Before(date) {
+			break
+		}
+	}
 }
 
 func (c JpCalender) isLargerDay(i, startWeekDayInt int) bool {
@@ -98,11 +117,18 @@ func (c JpCalender) fillDate(d time.Time) string {
 	if c.startWithMonday {
 		dStr = fmt.Sprint(d.AddDate(0, 0, 1).Day())
 	}
+
+	// a digit or more
+	isSmallDate := false
+	if len(dStr) == 1 {
+		isSmallDate = true
+	}
+
 	// heiright for today
 	if fmt.Sprint(today.Day()) == dStr {
 		dStr = colorable(dStr)
 	}
-	if len(dStr) == 1 {
+	if isSmallDate {
 		return " " + dStr
 	}
 	return dStr
@@ -118,7 +144,7 @@ func (c JpCalender) fillWeekDay(startDay time.Time) string {
 		// for i := 0; i < 7; i++ {
 		for index, i := range c.weekdayIndex {
 			if c.verbos {
-				log.Print("loop=", i, " ", index-startWeekDayInt, " ", c.isLargerDay(i, startWeekDayInt))
+				fmt.Fprintf(os.Stderr, "[DEBUG] loop=%v %v %v", i, index-startWeekDayInt, c.isLargerDay(i, startWeekDayInt))
 			}
 			if c.isLargerDay(i, startWeekDayInt) {
 				days = append(days, c.fillDate(startDay.AddDate(0, 0, index-startWeekDayInt)))
@@ -133,7 +159,7 @@ func (c JpCalender) fillWeekDay(startDay time.Time) string {
 	for index, i := range c.weekdayIndex {
 		lastWeekDayInt := int(c.LastDay().Weekday())
 		if c.verbos {
-			log.Print("loop=", i, " ", index-startWeekDayInt, " ", c.isLargerDay(i, lastWeekDayInt))
+			fmt.Fprintf(os.Stderr, "[DEGUB] loop=%v %v %v", i, index-startWeekDayInt, c.isLargerDay(i, lastWeekDayInt))
 		}
 		// for i := 0; i < 7; i++ {
 		if !c.isLargerDay(i, lastWeekDayInt+1) {
@@ -161,7 +187,7 @@ func (c JpCalender) ShowWeek(startDay time.Time) string {
 	days := []string{}
 
 	if c.verbos {
-		log.Printf("isBegin:%v, isLast:%v", c.isBeginWeek(startDay), c.isLastWeek(startDay))
+		fmt.Fprintf(os.Stderr, "[DEGUB] isBegin:%v, isLast:%v", c.isBeginWeek(startDay), c.isLastWeek(startDay))
 	}
 
 	if c.isBeginWeek(startDay) || c.isLastWeek(startDay) {

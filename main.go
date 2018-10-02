@@ -3,49 +3,33 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/matsu0228/calg/calg"
 )
 
 var verbos bool
-var startWithMonday bool
+var startWithSunday bool
 
 func init() {
 	flag.BoolVar(&verbos, "v", false, "show debug strings")
-	flag.BoolVar(&startWithMonday, "m", false, "weekday with starting monday")
+	flag.BoolVar(&startWithSunday, "s", false, "weekday with starting sunday(default: start with monday)")
 	flag.Parse()
 }
 
 func main() {
 	now := time.Now()
 	// now := time.Now().AddDate(1, 1, 0) //debug
-	c := calg.NewCalender(now, startWithMonday, verbos)
 
-	// if v {
-	// 	log.Printf("today: %v, last: %v", today, c.LastDay())
-	// }
-	fmt.Println(c.ShowCalenderLabel())
-	fmt.Println(c.ShowWeekLabel())
+	// default: start with monday
+	c := calg.NewCalender(now, !startWithSunday, verbos)
 
-	date := c.BeginDay()
-	fmt.Println(c.ShowWeek(date))
+	if verbos {
+		fmt.Fprintf(os.Stderr, "now: %v, last: %v", now, c.LastDay())
+	}
 
-	date = c.NextWeekDay(date)
-	fmt.Println(c.ShowWeek(date))
-
-	date = c.NextWeekDay(date)
-	fmt.Println(c.ShowWeek(date))
-
-	date = c.NextWeekDay(date)
-	fmt.Println(c.ShowWeek(date))
-
-	date = c.NextWeekDay(date)
-	fmt.Println(c.ShowWeek(date))
-
-	date = c.NextWeekDay(date)
-	fmt.Println(c.ShowWeek(date))
-
-	// fmt.Println(c.ShowWeek(today))
+	// display monthly calender
+	c.ShowMonthly()
 
 }
